@@ -1,5 +1,6 @@
 /*
-- Change so can create set Levels instead of randomized ones.
+-            Change so can create set Levels instead of randomized ones.
+- use version control
 - Fix up function of Poisoned Goal!! (Kills frogs if they sit them too long)
 - Blue frog
 - Yellow frog
