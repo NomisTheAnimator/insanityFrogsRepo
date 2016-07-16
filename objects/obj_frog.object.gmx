@@ -230,8 +230,8 @@ if(sprite_index = spr_frogRed)
             game_restart();
         }
         
-        show_debug_message("global.frogCounterTotal: "+ string(global.frogCounterTotal));
-        show_debug_message("global.frogsSaved: "+ string(global.frogsSaved));
+        //show_debug_message("global.frogCounterTotal: "+ string(global.frogCounterTotal));
+        //show_debug_message("global.frogsSaved: "+ string(global.frogsSaved));
    
     
     
