@@ -1,0 +1,42 @@
+{"skeleton":{"images":"images/"},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"thigh B R","bone":"root","attachment":"thigh B R"},
+	{"name":"shin B R","bone":"root","attachment":"shin B R"},
+	{"name":"foot B R","bone":"root","attachment":"foot B R"},
+	{"name":"thigh B L","bone":"root","attachment":"thigh B L"},
+	{"name":"shin B L","bone":"root","attachment":"shin B L"},
+	{"name":"foot B L","bone":"root","attachment":"foot B L"},
+	{"name":"Body","bone":"root","attachment":"Body"},
+	{"name":"arm R","bone":"root","attachment":"arm R"},
+	{"name":"hand R","bone":"root","attachment":"hand R"},
+	{"name":"arm L","bone":"root","attachment":"arm L"},
+	{"name":"hand L","bone":"root","attachment":"hand L"},
+	{"name":"mouth","bone":"root","attachment":"mouth"},
+	{"name":"eye L","bone":"root","attachment":"eye L"},
+	{"name":"eye R","bone":"root","attachment":"eye R"},
+	{"name":"pupil L","bone":"root","attachment":"pupil L"},
+	{"name":"pupil R","bone":"root","attachment":"pupil R"}
+],
+"skins":{
+	"default":{
+		"pupil R":{"pupil R":{"x":460,"y":337,"width":52,"height":52}},
+		"pupil L":{"pupil L":{"x":365,"y":337,"width":52,"height":52}},
+		"eye R":{"eye R":{"x":467.5,"y":336.5,"width":103,"height":103}},
+		"eye L":{"eye L":{"x":357.5,"y":336.5,"width":103,"height":103}},
+		"mouth":{"mouth":{"x":414,"y":268,"width":238,"height":48}},
+		"hand L":{"hand L":{"x":330.5,"y":161,"width":69,"height":60}},
+		"arm L":{"arm L":{"x":294,"y":202,"width":64,"height":82}},
+		"hand R":{"hand R":{"x":503.5,"y":161,"width":69,"height":60}},
+		"arm R":{"arm R":{"x":535,"y":202,"width":64,"height":82}},
+		"Body":{"Body":{"x":414,"y":271.5,"width":280,"height":165}},
+		"foot B L":{"foot B L":{"x":226,"y":199,"width":126,"height":92}},
+		"shin B L":{"shin B L":{"x":228.5,"y":301,"width":103,"height":176}},
+		"thigh B L":{"thigh B L":{"x":242,"y":304.5,"width":128,"height":169}},
+		"foot B R":{"foot B R":{"x":599,"y":210,"width":126,"height":92}},
+		"shin B R":{"shin B R":{"x":584,"y":310.5,"width":88,"height":183}},
+		"thigh B R":{"thigh B R":{"x":568.5,"y":312.5,"width":115,"height":177}}
+	}
+},
+"animations":{"animation":{}}
+}
