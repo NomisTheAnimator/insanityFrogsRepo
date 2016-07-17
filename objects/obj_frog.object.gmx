@@ -79,7 +79,6 @@ if(global.frogType == 1)
           <argument>
             <kind>1</kind>
             <string>
-
 //MOVING VARIABLES
 
 
@@ -109,6 +108,7 @@ canMove = true;
 //GREEN FROG MOVE RULES
 if(sprite_index == spr_frogGreen)
 { 
+whichFrogAmI = sprite_index;
     if(keyboard_check_pressed(ord("W")))
     &amp;&amp;(!keyboard_check_pressed(ord("A")))
     &amp;&amp;(!keyboard_check_pressed(ord("D")))
@@ -142,6 +142,7 @@ if(sprite_index == spr_frogGreen)
 //RED FROG MOVE RULES
 if(sprite_index = spr_frogRed)
 {
+whichFrogAmI = sprite_index;
     if(keyboard_check_pressed(ord("W")))
     &amp;&amp;(!keyboard_check_pressed(ord("A")))
     &amp;&amp;(!keyboard_check_pressed(ord("D")))
@@ -186,8 +187,12 @@ if(sprite_index = spr_frogRed)
                     if(!position_meeting(spotToMove.x,spotToMove.y,obj_frog))
                     &amp;&amp;(!position_meeting(spotToMove.x,spotToMove.y,obj_cross))
                     {
+                          // make the jump anim play!! 
+                         sprite_index = spr_testing_anim;
+                        //move to that spot
                         instance_create(spotToMove.x, spotToMove.y, obj_cross);
                         move_towards_point(spotToMove.x,spotToMove.y,5);
+                      
                     }
                     moving = true; 
                     letsGo = false;
@@ -202,16 +207,17 @@ if(sprite_index = spr_frogRed)
                         canMove = false;
                     }
                     
-//Stop the thing when it gets to the place
+//Stop the thing when it gets to the place and turn it back into a frog
          if (place_meeting(x, y, obj_cross))
         {
-        speed = 0;
-        moving = false;
-        x = spotToMove.x;
-        y = spotToMove.y;
-        canMove = true;  
-     
+            sprite_index = whichFrogAmI;
+            speed = 0;
+            moving = false;
+            x = spotToMove.x;
+            y = spotToMove.y;
+            canMove = true;  
         }
+        
         if(place_meeting(x,y,obj_goal))
         {
             instance_destroy();

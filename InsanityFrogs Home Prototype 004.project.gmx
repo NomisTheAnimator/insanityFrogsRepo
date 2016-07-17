@@ -15,6 +15,7 @@
     <sprite>sprites\spr_cross</sprite>
     <sprite>sprites\spr_splash</sprite>
     <sprite>sprites\spr_death</sprite>
+    <sprite>sprites\spr_testing_anim</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -32,6 +33,7 @@
     <object>objects\obj_death</object>
     <object>objects\obj_frogGreen_Placeholder</object>
     <object>objects\obj_frog_Red_Placeholder</object>
+    <object>objects\obj_testing_anim</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\randomLevel</room>
