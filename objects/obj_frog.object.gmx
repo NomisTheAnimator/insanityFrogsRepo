@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>global.frogsSaved = 0;
 global.frogType = irandom_range(0,1);
+global.timer = 0;
+
+
 
 //If this is not a random Level then set the global.frogCounterTotal and force the frogs to be what we want!!!
 var roomname = room_get_name(room);
@@ -61,6 +64,30 @@ if(global.frogType == 1)
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>show_debug_message("THERE IS SUPPOSED TO BE A BLINK HEREER");
+instance_create(x, y, obj_frogGreen_idle_01);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -79,9 +106,8 @@ if(global.frogType == 1)
           <argument>
             <kind>1</kind>
             <string>
+
 //MOVING VARIABLES
-
-
 distToCheck = 63;
 distToSpot = 64;
 
@@ -89,6 +115,9 @@ letsGo = false;
 moving = false;
 movingUpDwn = y;
 movingLR = x;
+
+//UP DOWN LEFT RIGHT 0 1 2 3
+jumpDir = 0;
 
 
 
@@ -104,6 +133,15 @@ canMove = true;
 
 
 
+global.timer = irandom(500);
+
+//RANDOMLY PLAY IDLE ANIMATIONS
+if(global.timer = 5)
+{
+    instance_create(x, y, obj_frogGreen_idle_01);
+}
+
+
 
 //GREEN FROG MOVE RULES
 if(sprite_index == spr_frogGreen)
@@ -115,6 +153,7 @@ whichFrogAmI = sprite_index;
     {
         movingUpDwn = y-distToCheck;
         letsGo = true;
+        jumpDir = 0;
     }
     if(keyboard_check_pressed(ord("S")))
     &amp;&amp;(!keyboard_check_pressed(ord("A")))
@@ -122,6 +161,7 @@ whichFrogAmI = sprite_index;
     {
         movingUpDwn = y+distToCheck;
         letsGo = true;
+        jumpDir = 1;
     }
     if(keyboard_check_pressed(ord("A")))
     &amp;&amp;(!keyboard_check_pressed(ord("W")))
@@ -129,6 +169,7 @@ whichFrogAmI = sprite_index;
     {
         movingLR = x-distToCheck;
         letsGo = true;
+        jumpDir = 2;
     }
     if(keyboard_check_pressed(ord("D")))
     &amp;&amp;(!keyboard_check_pressed(ord("W")))
@@ -136,6 +177,7 @@ whichFrogAmI = sprite_index;
     {
         movingLR = x+distToCheck;
         letsGo = true;
+        jumpDir = 3;
     }
     
 }
@@ -177,7 +219,12 @@ whichFrogAmI = sprite_index;
 
             if(letsGo == true)&amp;&amp;(canMove==true)
             {
-                    
+                //Kill all idle animation objects
+                with(obj_frogGreen_idle_01)
+                {
+                    instance_destroy();
+                
+                }
                 //Check if there's a tile there.
                 spotToMove = instance_nearest(movingLR, movingUpDwn, obj_tile); 
                 distToSpot = point_distance(x, y, spotToMove.x, spotToMove.y);
@@ -187,11 +234,26 @@ whichFrogAmI = sprite_index;
                     if(!position_meeting(spotToMove.x,spotToMove.y,obj_frog))
                     &amp;&amp;(!position_meeting(spotToMove.x,spotToMove.y,obj_cross))
                     {
-                          // make the jump anim play!! 
-                         sprite_index = spr_testing_anim;
+                          // make the correct jump anim play!! 
+                          if(jumpDir = 0)
+                          {
+                            sprite_index = spr_frogGreen_jumpUp;
+                          }
+                          if(jumpDir = 1)
+                          {
+                            sprite_index = spr_frogGreen_jumpDown;
+                          }
+                          if(jumpDir = 2)
+                          {
+                            sprite_index = spr_frogGreen_jumpLeft;
+                          }
+                          if(jumpDir = 3)
+                          {
+                            sprite_index = spr_frogGreen_jumpRight;
+                          }
                         //move to that spot
                         instance_create(spotToMove.x, spotToMove.y, obj_cross);
-                        move_towards_point(spotToMove.x,spotToMove.y,5);
+                        move_towards_point(spotToMove.x,spotToMove.y,2.9);
                       
                     }
                     moving = true; 
@@ -210,12 +272,12 @@ whichFrogAmI = sprite_index;
 //Stop the thing when it gets to the place and turn it back into a frog
          if (place_meeting(x, y, obj_cross))
         {
-            sprite_index = whichFrogAmI;
             speed = 0;
             moving = false;
             x = spotToMove.x;
             y = spotToMove.y;
             canMove = true;  
+            sprite_index = whichFrogAmI;
         }
         
         if(place_meeting(x,y,obj_goal))

@@ -16,6 +16,11 @@
     <sprite>sprites\spr_splash</sprite>
     <sprite>sprites\spr_death</sprite>
     <sprite>sprites\spr_testing_anim</sprite>
+    <sprite>sprites\spr_frogGreen_jumpDown</sprite>
+    <sprite>sprites\spr_frogGreen_jumpUp</sprite>
+    <sprite>sprites\spr_frogGreen_jumpRight</sprite>
+    <sprite>sprites\spr_frogGreen_jumpLeft</sprite>
+    <sprite>sprites\spr_frogGreen_idle_01</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -34,10 +39,11 @@
     <object>objects\obj_frogGreen_Placeholder</object>
     <object>objects\obj_frog_Red_Placeholder</object>
     <object>objects\obj_testing_anim</object>
+    <object>objects\obj_frogGreen_idle_01</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\randomLevel</room>
     <room>rooms\Level_01</room>
+    <room>rooms\randomLevel</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

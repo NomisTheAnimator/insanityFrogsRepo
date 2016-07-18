@@ -78,14 +78,18 @@
     <instance objName="obj_tile" x="256" y="480" name="inst_F3E86A2F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_poisonedGoal" x="256" y="224" name="inst_8EFC38B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_goal" x="512" y="224" name="inst_93E8790E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tile" x="160" y="-64" name="inst_C0EAC8D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_frog" x="96" y="416" name="inst_2D97FDA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_frog_Red_Placeholder" x="448" y="416" name="inst_934BA20D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_frog_Red_Placeholder" x="384" y="416" name="inst_5DDD4453" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_frog_Red_Placeholder" x="320" y="416" name="inst_29B78430" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_frogGreen_Placeholder" x="320" y="352" name="inst_BBF94141" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_frogGreen_Placeholder" x="448" y="352" name="inst_C1E2FF54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_frogGreen_Placeholder" x="384" y="352" name="inst_B1B31006" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_frogGreen_Placeholder" x="320" y="288" name="inst_BA032CF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_frogGreen_Placeholder" x="320" y="480" name="inst_752D5521" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_frogGreen_Placeholder" x="384" y="480" name="inst_C576DFB8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_frogGreen_Placeholder" x="448" y="288" name="inst_D516461E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_frogGreen_Placeholder" x="384" y="288" name="inst_85F26EC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_frogGreen_Placeholder" x="512" y="352" name="inst_A5F7CD9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
