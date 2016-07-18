@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///Create the game Board.
+global.timer = 0;
 
 //DECLARE ALL THE VARIABLES!!!
 global.destroyCross = false;
@@ -185,6 +186,8 @@ if(roomname == "randomLevel")
     game_restart();
 
 }
+
+global.timer ++;
 </string>
           </argument>
         </arguments>
