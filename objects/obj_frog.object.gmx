@@ -136,11 +136,10 @@ canMove = true;
 global.timer = irandom(500);
 
 //RANDOMLY PLAY IDLE ANIMATIONS
-if(global.timer = 5)
+if(global.timer = 5)&amp;&amp;(canMove == true)
 {
-    instance_create(x, y, obj_frogGreen_idle_01);
+    instance_create(x, y, obj_frogGreen_idle_01); 
 }
-
 
 
 //GREEN FROG MOVE RULES
@@ -278,6 +277,7 @@ whichFrogAmI = sprite_index;
             y = spotToMove.y;
             canMove = true;  
             sprite_index = whichFrogAmI;
+            
         }
         
         if(place_meeting(x,y,obj_goal))
