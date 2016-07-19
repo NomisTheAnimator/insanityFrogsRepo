@@ -121,7 +121,6 @@
     <instance objName="obj_poisonedGoal" x="320" y="224" name="inst_4D5C60E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_poisonedGoal" x="448" y="224" name="inst_93D8BF99" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_poisonedGoal" x="512" y="224" name="inst_465688E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="0" y="0" name="inst_32ABF034" locked="0" code="" scaleX="0" scaleY="0" colour="0" rotation="0"/>
     <instance objName="obj_poisonedGoal" x="256" y="96" name="inst_6A1B162F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
