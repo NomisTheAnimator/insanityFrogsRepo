@@ -28,6 +28,7 @@
             <string>global.frogsSaved = 0;
 global.frogType = irandom_range(0,1);
 global.timer = 0;
+global.hasWaited = false;
 
 
 
@@ -81,8 +82,9 @@ if(global.frogType == 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>show_debug_message("THERE IS SUPPOSED TO BE A BLINK HEREER");
-instance_create(x, y, obj_frogGreen_idle_01);
+            <string>show_debug_message("ALARM TWO WAITING HAS BEEN TRIGGERED");
+//global.hasWaited = true;
+
 </string>
           </argument>
         </arguments>
@@ -105,116 +107,194 @@ instance_create(x, y, obj_frogGreen_idle_01);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>//game Design tools
+if(keyboard_check_pressed(ord("L")))
+{
+    room_goto_next();
+}
+if(keyboard_check_pressed(ord("K")))
+{
+    room_goto_previous();
+}
 
-//MOVING VARIABLES
+
+
+//MOVING/Timing VARIABLES
 distToCheck = 63;
 distToSpot = 64;
-
-speedToMove = random_range(2.9,4.2);
-
+speedToMove = 2.9;
 letsGo = false;
 moving = false;
 movingUpDwn = y;
 movingLR = x;
+aFrogGreen = false;
+aFrogRed = false;
+frogRndTiming = 6;
+
 
 //UP DOWN LEFT RIGHT 0 1 2 3
 jumpDir = 0;
 
+        //CHeck are we moving????
+        if(speed &gt; 0)
+        {
+        canMove = false;
+        }
+        if(speed &lt;= 0)
+        {
+        canMove = true;
+        }
+    /*
+    //RANDOMLY PLAY IDLE ANIMATIONS - Code isn't good. Need another solution.
+    global.timer = irandom(500);
+    if(global.timer = 5)&amp;&amp;(canMove == true)
+    {
+        instance_create(x, y, obj_frogGreen_idle_01); 
+    }
+    */
+    
+//DETERMINE WHICH FROG I AM!!
 
-
-if(speed &gt; 0)
+if(sprite_index == spr_frogGreen)||(sprite_index == spr_frogGreen_idle_01)
 {
-canMove = false;
-}
-
-if(speed &lt;= 0)
+aFrogGreen = true;
+}  
+if(sprite_index = spr_frogRed)||(sprite_index == spr_frogRed_idle_01)
 {
-canMove = true;
-}
-
-
-
-global.timer = irandom(500);
-
-//RANDOMLY PLAY IDLE ANIMATIONS
-if(global.timer = 5)&amp;&amp;(canMove == true)
-{
-    instance_create(x, y, obj_frogGreen_idle_01); 
-}
-
-
+aFrogRed = true;
+} 
+   
 //GREEN FROG MOVE RULES
-if(sprite_index == spr_frogGreen)
+if(aFrogGreen == true)
 { 
-whichFrogAmI = sprite_index;
+whatsMySpriteInd = sprite_index;
+
     if(keyboard_check_pressed(ord("W")))
     &amp;&amp;(!keyboard_check_pressed(ord("A")))
     &amp;&amp;(!keyboard_check_pressed(ord("D")))
-    {
-        movingUpDwn = y-distToCheck;
-        letsGo = true;
-        jumpDir = 0;
-    }
+        {
+            //Set a random alarm to wait to move.
+            alarm_set(2, irandom_range(0,frogRndTiming));
+        }
+    if (alarm[2] = 0)&amp;&amp;(keyboard_lastkey = ord("W"))
+        {
+            movingUpDwn = y-distToCheck;
+            letsGo = true;
+            jumpDir = 0;
+            alarm_set(2, -1)
+        }
+
     if(keyboard_check_pressed(ord("S")))
     &amp;&amp;(!keyboard_check_pressed(ord("A")))
     &amp;&amp;(!keyboard_check_pressed(ord("D")))
-    {
-        movingUpDwn = y+distToCheck;
-        letsGo = true;
-        jumpDir = 1;
-    }
+        {
+            //Set a random alarm to wait to move.
+            alarm_set(2, irandom_range(0,frogRndTiming));
+        }
+    if (alarm[2] = 0)&amp;&amp;(keyboard_lastkey = ord("S"))
+        {
+            movingUpDwn = y+distToCheck;
+            letsGo = true;
+            jumpDir = 1;
+            alarm_set(2, -1)
+        }
+   
     if(keyboard_check_pressed(ord("A")))
     &amp;&amp;(!keyboard_check_pressed(ord("W")))
     &amp;&amp;(!keyboard_check_pressed(ord("S")))
-    {
-        movingLR = x-distToCheck;
-        letsGo = true;
-        jumpDir = 2;
-    }
+        {
+            //Set a random alarm to wait to move.
+            alarm_set(2, irandom_range(0,frogRndTiming));
+        }
+    if (alarm[2] = 0)&amp;&amp;(keyboard_lastkey = ord("A"))
+        {
+            movingLR = x-distToCheck;
+            letsGo = true;
+            jumpDir = 2;
+            alarm_set(2, -1)
+        }
+
     if(keyboard_check_pressed(ord("D")))
     &amp;&amp;(!keyboard_check_pressed(ord("W")))
     &amp;&amp;(!keyboard_check_pressed(ord("S")))
-    {
-        movingLR = x+distToCheck;
-        letsGo = true;
-        jumpDir = 3;
-    }
-    
+        {
+            //Set a random alarm to wait to move.
+            alarm_set(2, irandom_range(0,frogRndTiming));
+        }
+    if (alarm[2] = 0)&amp;&amp;(keyboard_lastkey = ord("D"))
+        {
+            movingLR = x+distToCheck;
+            letsGo = true;
+            jumpDir = 3;
+            alarm_set(2, -1)
+        }
+   
 }
+
+
 //RED FROG MOVE RULES
-if(sprite_index = spr_frogRed)
+if(aFrogRed == true)
 {
-whichFrogAmI = sprite_index;
+  whatsMySpriteInd = sprite_index;
     if(keyboard_check_pressed(ord("W")))
     &amp;&amp;(!keyboard_check_pressed(ord("A")))
     &amp;&amp;(!keyboard_check_pressed(ord("D")))
-    
-    {
-       movingUpDwn = y+distToCheck;
-        letsGo = true;    
-    }
+        {
+            //Set a random alarm to wait to move.
+            alarm_set(2, irandom_range(0,frogRndTiming));
+        }
+    if (alarm[2] = 0)&amp;&amp;(keyboard_lastkey = ord("W"))
+        {
+            movingUpDwn = y+distToCheck;
+            letsGo = true;
+            jumpDir = 0;
+            alarm_set(2, -1)
+        }
+
     if(keyboard_check_pressed(ord("S")))
     &amp;&amp;(!keyboard_check_pressed(ord("A")))
     &amp;&amp;(!keyboard_check_pressed(ord("D")))
-    {
-        movingUpDwn = y-distToCheck;
-        letsGo = true;
-    }
+        {
+            //Set a random alarm to wait to move.
+            alarm_set(2, irandom_range(0,frogRndTiming));
+        }
+    if (alarm[2] = 0)&amp;&amp;(keyboard_lastkey = ord("S"))
+        {
+            movingUpDwn = y-distToCheck;
+            letsGo = true;
+            jumpDir = 1;
+            alarm_set(2, -1)
+        }
+   
     if(keyboard_check_pressed(ord("A")))
     &amp;&amp;(!keyboard_check_pressed(ord("W")))
     &amp;&amp;(!keyboard_check_pressed(ord("S")))
-    {
-        movingLR = x+distToCheck;
-        letsGo = true;
-    }
+        {
+            //Set a random alarm to wait to move.
+            alarm_set(2, irandom_range(0,frogRndTiming));
+        }
+    if (alarm[2] = 0)&amp;&amp;(keyboard_lastkey = ord("A"))
+        {
+            movingLR = x+distToCheck;
+            letsGo = true;
+            jumpDir = 2;
+            alarm_set(2, -1)
+        }
+
     if(keyboard_check_pressed(ord("D")))
     &amp;&amp;(!keyboard_check_pressed(ord("W")))
     &amp;&amp;(!keyboard_check_pressed(ord("S")))
-    {
-        movingLR = x-distToCheck;
-        letsGo = true;
-    }
+        {
+            //Set a random alarm to wait to move.
+            alarm_set(2, irandom_range(0,frogRndTiming));
+        }
+    if (alarm[2] = 0)&amp;&amp;(keyboard_lastkey = ord("D"))
+        {
+            movingLR = x-distToCheck;
+            letsGo = true;
+            jumpDir = 3;
+            alarm_set(2, -1)
+        }
     
 }
 
@@ -236,23 +316,46 @@ whichFrogAmI = sprite_index;
                     &amp;&amp;(!position_meeting(spotToMove.x,spotToMove.y,obj_cross))
                     {
                           // make the correct jump anim play!! 
-                          if(jumpDir = 0)
+                          if(aFrogGreen == true)
                           {
-                            sprite_index = spr_frogGreen_jumpUp;
+                              if(jumpDir = 0)
+                              {
+                                sprite_index = spr_frogGreen_jumpUp;
+                              }
+                              if(jumpDir = 1)
+                              {
+                                sprite_index = spr_frogGreen_jumpDown;
+                              }
+                              if(jumpDir = 2)
+                              {
+                                sprite_index = spr_frogGreen_jumpLeft;
+                              }
+                              if(jumpDir = 3)
+                              {
+                                sprite_index = spr_frogGreen_jumpRight;
+                              }
                           }
-                          if(jumpDir = 1)
+                          if(aFrogRed == true)
                           {
-                            sprite_index = spr_frogGreen_jumpDown;
+                              if(jumpDir = 0)
+                              {
+                                sprite_index = spr_frogRed_jumpUp;
+                              }
+                              if(jumpDir = 1)
+                              {
+                                sprite_index = spr_frogRed_jumpDown;
+                              }
+                              if(jumpDir = 2)
+                              {
+                                sprite_index = spr_frogRed_jumpLeft;
+                              }
+                              if(jumpDir = 3)
+                              {
+                                sprite_index = spr_frogRed_jumpRight;
+                              }
                           }
-                          if(jumpDir = 2)
-                          {
-                            sprite_index = spr_frogGreen_jumpLeft;
-                          }
-                          if(jumpDir = 3)
-                          {
-                            sprite_index = spr_frogGreen_jumpRight;
-                          }
-                        //move to that spot
+                          
+                        //move to that spot---------------------------------------
                         instance_create(spotToMove.x, spotToMove.y, obj_cross);
                         move_towards_point(spotToMove.x,spotToMove.y,speedToMove);
                       
@@ -278,7 +381,7 @@ whichFrogAmI = sprite_index;
             x = spotToMove.x;
             y = spotToMove.y;
             canMove = true;  
-            sprite_index = whichFrogAmI;
+            sprite_index = whatsMySpriteInd;
             audio_play_sound(snd_frogland, 1, false);
             
         }
@@ -288,21 +391,24 @@ whichFrogAmI = sprite_index;
             instance_destroy();
             instance_create(spotToMove.x,spotToMove.y,obj_splash);
             global.frogsSaved ++;
+            audio_play_sound(snd_frogInGoal,1,false);
         }
         if(place_meeting(x,y,obj_poisonedGoal))
         {
             instance_destroy();
             instance_create(spotToMove.x,spotToMove.y,obj_death);
+            instance_create(x,y,effect_shake);
             global.frogsSaved ++;
         }  
         
-        if(global.frogsSaved &gt;= global.frogCounterTotal)
+      /* this is now in the SPLASH animation
+        if(global.frogsSaved &gt;= global.frogCounterTotal+1)
         {
-            game_restart();
+                room_goto(room_next(room)); 
         }
+        */
         
-        //show_debug_message("global.frogCounterTotal: "+ string(global.frogCounterTotal));
-        //show_debug_message("global.frogsSaved: "+ string(global.frogsSaved));
+
    
     
     

@@ -25,14 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = .1;
+            <string>image_speed = .5;
+image_angle = random(360);
+image_xscale = .5;
+image_yscale = .5;
 
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="7">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -49,13 +52,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_speed &gt; 0
-    {
-        if (image_index &gt; image_number - 1) 
-            {
-            instance_destroy();
-            }
-    }
+            <string>instance_destroy();
+ if(global.frogsSaved &gt;= global.frogCounterTotal+1)
+        {
+                room_goto(room_next(room)); 
+        }
+
+
+
 </string>
           </argument>
         </arguments>

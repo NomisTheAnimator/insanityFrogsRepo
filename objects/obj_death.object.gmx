@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=.1
+            <string>image_speed=.8;
+image_angle = random(360);
+image_xscale = .5;
+image_yscale = .5;
+audio_play_sound(snd_bombExplode, 1, false);
 </string>
           </argument>
         </arguments>
@@ -48,8 +52,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// restart game
-game_end();
+            <string>/// restart level
+room_restart();
 </string>
           </argument>
         </arguments>
