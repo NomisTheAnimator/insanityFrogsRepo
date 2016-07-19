@@ -6,9 +6,12 @@
   <NewExtensions/>
   <sounds name="sound">
     <sound>sound\snd_frogland</sound>
+    <sound>sound\snd_bombExplode</sound>
+    <sound>sound\snd_frogInGoal</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_tile</sprite>
+    <sprite>sprites\spr_ROCK</sprite>
     <sprite>sprites\spr_goal</sprite>
     <sprite>sprites\spr_poisonGoal</sprite>
     <sprite>sprites\spr_frogBase</sprite>
@@ -18,13 +21,34 @@
     <sprite>sprites\spr_splash</sprite>
     <sprite>sprites\spr_death</sprite>
     <sprite>sprites\spr_testing_anim</sprite>
-    <sprite>sprites\spr_frogGreen_jumpDown</sprite>
-    <sprite>sprites\spr_frogGreen_jumpUp</sprite>
-    <sprite>sprites\spr_frogGreen_jumpRight</sprite>
-    <sprite>sprites\spr_frogGreen_jumpLeft</sprite>
-    <sprite>sprites\spr_frogGreen_idle_01</sprite>
+    <sprites name="TITLES">
+      <sprite>sprites\spr_endImageStatic</sprite>
+      <sprite>sprites\spr_tit_getFrog</sprite>
+      <sprite>sprites\spr_tit_toPond</sprite>
+      <sprite>sprites\spr_tit_behave</sprite>
+      <sprite>sprites\spr_wasd</sprite>
+      <sprite>sprites\spr_tit_watchout</sprite>
+    </sprites>
+    <sprites name="frog_jumpAnimations">
+      <sprites name="GREEN frog animations">
+        <sprite>sprites\spr_frogGreen_idle_01</sprite>
+        <sprite>sprites\spr_frogGreen_jumpUp</sprite>
+        <sprite>sprites\spr_frogGreen_jumpDown</sprite>
+        <sprite>sprites\spr_frogGreen_jumpLeft</sprite>
+        <sprite>sprites\spr_frogGreen_jumpRight</sprite>
+      </sprites>
+      <sprites name="RED frog animations">
+        <sprite>sprites\spr_frogRed_idle_01</sprite>
+        <sprite>sprites\spr_frogRed_jumpUp</sprite>
+        <sprite>sprites\spr_frogRed_jumpDown</sprite>
+        <sprite>sprites\spr_frogRed_jumpLeft</sprite>
+        <sprite>sprites\spr_frogRed_jumpRight</sprite>
+      </sprites>
+    </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_tit_qToQuit</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\THINGS_LEFT_TO_DO_.gml</script>
@@ -42,9 +66,27 @@
     <object>objects\obj_frog_Red_Placeholder</object>
     <object>objects\obj_testing_anim</object>
     <object>objects\obj_frogGreen_idle_01</object>
+    <objects name="TITLES">
+      <object>objects\obj_tit_getFrog</object>
+      <object>objects\obj_endImageStatic</object>
+      <object>objects\obj_tit_toPond</object>
+      <object>objects\obj_tit_behave</object>
+      <object>objects\obj_wasd</object>
+      <object>objects\obj_tit_watchout</object>
+    </objects>
+    <object>objects\effect_shake</object>
+    <object>objects\obj_ROCK</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Level_01</room>
+    <room>rooms\Level_02</room>
+    <room>rooms\Level_03</room>
+    <room>rooms\Level_04</room>
+    <room>rooms\Level_05</room>
+    <room>rooms\Level_06</room>
+    <room>rooms\Level_07</room>
+    <room>rooms\Level_11</room>
+    <room>rooms\Level_End</room>
     <room>rooms\randomLevel</room>
   </rooms>
   <help>

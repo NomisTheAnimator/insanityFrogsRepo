@@ -28,13 +28,14 @@
             <string>///Create the game Board.
 global.timer = 0;
 
+
 //DECLARE ALL THE VARIABLES!!!
 global.destroyCross = false;
 
-numOfRows = 5;
-numOfCols = 5;
+numOfRows = 10;
+numOfCols = 12;
 totalTiles = numOfRows*numOfCols;
-numberOfFrogs = 10;
+numberOfFrogs = 40;
 global.frogCounterTotal = 1;
 
 widthOfTile = 64;
@@ -183,8 +184,7 @@ if(roomname == "randomLevel")
             <kind>1</kind>
             <string>if(keyboard_check_pressed(ord("R")))
 {
-    game_restart();
-
+    room_restart();
 }
 
 global.timer ++;
