@@ -17,6 +17,7 @@
     <sprite>sprites\spr_frogBase</sprite>
     <sprite>sprites\spr_frogRed</sprite>
     <sprite>sprites\spr_frogGreen</sprite>
+    <sprite>sprites\spr_frogPurple</sprite>
     <sprite>sprites\spr_cross</sprite>
     <sprite>sprites\spr_splash</sprite>
     <sprite>sprites\spr_death</sprite>
@@ -44,6 +45,10 @@
         <sprite>sprites\spr_frogRed_jumpLeft</sprite>
         <sprite>sprites\spr_frogRed_jumpRight</sprite>
       </sprites>
+      <sprites name="PURPLE frog animations">
+        <sprite>sprites\spr_frogPurple_idle_01</sprite>
+        <sprite>sprites\spr_frogPurple_jumpUp</sprite>
+      </sprites>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -63,6 +68,7 @@
     <object>objects\obj_poisonedGoal</object>
     <object>objects\obj_death</object>
     <object>objects\obj_frogGreen_Placeholder</object>
+    <object>objects\obj_frogPurple_Placeholder</object>
     <object>objects\obj_frog_Red_Placeholder</object>
     <object>objects\obj_testing_anim</object>
     <object>objects\obj_frogGreen_idle_01</object>
@@ -78,6 +84,7 @@
     <object>objects\obj_ROCK</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\Level_Testing_stuff</room>
     <room>rooms\Level_01</room>
     <room>rooms\Level_02</room>
     <room>rooms\Level_03</room>

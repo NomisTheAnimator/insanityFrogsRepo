@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>global.frogsSaved = 0;
-global.frogType = irandom_range(0,1);
+global.frogType = irandom_range(0,2);
 global.timer = 0;
 global.hasWaited = false;
 
@@ -50,6 +50,10 @@ if(global.frogType == 0)
 if(global.frogType == 1)
 {
    sprite_index = spr_frogRed;
+}
+if(global.frogType == 2)
+{
+   sprite_index = spr_frogPurple;
 }
 
 
@@ -118,6 +122,10 @@ if(keyboard_check_pressed(ord("K")))
 {
     room_goto_previous();
 }
+if(keyboard_check_pressed(ord("R")))
+{
+    game_restart();
+}
 
 
 //image_speed = 1.2;
@@ -126,12 +134,14 @@ if(keyboard_check_pressed(ord("K")))
 distToCheck = 63;
 distToSpot = 64;
 speedToMove = 2.9;
+    
 letsGo = false;
 moving = false;
 movingUpDwn = y;
 movingLR = x;
 aFrogGreen = false;
 aFrogRed = false;
+aFrogPurple = false;
 frogRndTiming = 6;
 
 
@@ -152,7 +162,7 @@ jumpDir = 0;
     global.timer = irandom(500);
     if(global.timer = 5)&amp;&amp;(canMove == true)
     {
-        instance_create(x, y, obj_frogGreen_idle_01); 
+        sprite_index = THE FROG IDLE ANIMATION!!! 
     }
     */
     
@@ -166,7 +176,16 @@ if(sprite_index = spr_frogRed)||(sprite_index == spr_frogRed_idle_01)
 {
 aFrogRed = true;
 } 
-   
+if(sprite_index = spr_frogPurple)||(sprite_index == spr_frogPurple_idle_01)
+{
+aFrogPurple = true;
+} 
+//-----------------------------change speed if you're a purple frog-----------------------------
+if(aFrogPurple == true)
+    {
+         speedToMove = 5;
+     }
+//-----------------------------change speed if you're a purple frog-----------------------------
 //GREEN FROG MOVE RULES
 if(aFrogGreen == true)
 { 
@@ -298,20 +317,105 @@ if(aFrogRed == true)
             jumpDir = 3;
             alarm_set(2, -1)
         }
+        
+}
+        
+//PURPLE FROG MOVE RULES
+if(aFrogPurple == true)
+{
+  whatsMySpriteInd = sprite_index;
+    if(keyboard_check_pressed(ord("W")))
+    &amp;&amp;(!keyboard_check_pressed(ord("A")))
+    &amp;&amp;(!keyboard_check_pressed(ord("D")))
+        {
+            //Set a random alarm to wait to move.
+            alarm_set(2, irandom_range(0,frogRndTiming));
+        }
+    if (alarm[2] = 0)&amp;&amp;(keyboard_lastkey = ord("W"))
+        {
+            movingUpDwn = y-distToCheck;
+            movingLR = x-distToCheck;
+            letsGo = true;
+            jumpDir = 0;
+            alarm_set(2, -1)
+        }
+
+    if(keyboard_check_pressed(ord("S")))
+    &amp;&amp;(!keyboard_check_pressed(ord("A")))
+    &amp;&amp;(!keyboard_check_pressed(ord("D")))
+        {
+            //Set a random alarm to wait to move.
+            alarm_set(2, irandom_range(0,frogRndTiming));
+        }
+    if (alarm[2] = 0)&amp;&amp;(keyboard_lastkey = ord("S"))
+        {
+            movingUpDwn = y+distToCheck;
+            movingLR = x+distToCheck;
+            letsGo = true;
+            jumpDir = 1;
+            alarm_set(2, -1)
+        }
+   
+    if(keyboard_check_pressed(ord("A")))
+    &amp;&amp;(!keyboard_check_pressed(ord("W")))
+    &amp;&amp;(!keyboard_check_pressed(ord("S")))
+        {
+            //Set a random alarm to wait to move.
+            alarm_set(2, irandom_range(0,frogRndTiming));
+        }
+    if (alarm[2] = 0)&amp;&amp;(keyboard_lastkey = ord("A"))
+        {
+            movingUpDwn = y-distToCheck;
+            movingLR = x+distToCheck;
+            letsGo = true;
+            jumpDir = 2;
+            alarm_set(2, -1)
+        }
+
+    if(keyboard_check_pressed(ord("D")))
+    &amp;&amp;(!keyboard_check_pressed(ord("W")))
+    &amp;&amp;(!keyboard_check_pressed(ord("S")))
+        {
+            //Set a random alarm to wait to move.
+            alarm_set(2, irandom_range(0,frogRndTiming));
+        }
+    if (alarm[2] = 0)&amp;&amp;(keyboard_lastkey = ord("D"))
+        {
+            movingUpDwn = y+distToCheck;
+            movingLR = x-distToCheck;
+            letsGo = true;
+            jumpDir = 3;
+            alarm_set(2, -1)
+        }
     
 }
 
-            if(letsGo == true)&amp;&amp;(canMove==true)
+           
+            //LETS GET MOVING!!!
+              if(letsGo == true)&amp;&amp;(canMove==true)
             {
+                /*
                 //Kill all idle animation objects
                 with(obj_frogGreen_idle_01)
                 {
                     instance_destroy();
-                
                 }
+                */
                 //Check if there's a tile there.
-                spotToMove = instance_nearest(movingLR, movingUpDwn, obj_tile); 
+                
+                spotToMove = instance_nearest(movingLR, movingUpDwn, obj_tile);
                 distToSpot = point_distance(x, y, spotToMove.x, spotToMove.y);
+                
+                tileExists = instance_place(movingLR, movingUpDwn, obj_tile);
+                show_debug_message("tileExists: " + string(tileExists));
+                //If a tile isnt there set the speed to 0 so you don't move.
+                if(tileExists == -4)
+                {
+                    fgh FIX THIS!!! speedToMove = 0; 
+                }
+                
+
+                
                 
                     //Move to that spot 
                     //If there is no frog or cross there you can move.
@@ -357,9 +461,30 @@ if(aFrogRed == true)
                                 sprite_index = spr_frogRed_jumpRight;
                               }
                           }
+                          if(aFrogPurple == true)
+                          {
+                              if(jumpDir = 0)
+                              {
+                                sprite_index = spr_frogPurple_jumpUp;
+                              }
+                              if(jumpDir = 1)
+                              {
+                                sprite_index = spr_frogPurple_jumpUp;
+                              }
+                              if(jumpDir = 2)
+                              {
+                                sprite_index = spr_frogPurple_jumpUp;
+                              }
+                              if(jumpDir = 3)
+                              {
+                                sprite_index = spr_frogPurple_jumpUp;
+                              }
+                          }
                           
                         //move to that spot---------------------------------------
                         instance_create(spotToMove.x, spotToMove.y, obj_cross);
+                        
+                        
                         move_towards_point(spotToMove.x,spotToMove.y,speedToMove);
                       
                     }
