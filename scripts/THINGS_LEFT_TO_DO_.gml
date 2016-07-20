@@ -1,6 +1,7 @@
 /*
--            Change so can create set Levels instead of randomized ones.
-- use version control
+- Make RED frog in SPINE - PSD change shape a little. 
+- Work out better export solution from SPINE so dont have to use PS actions automation
+- Change name of poisoned Goal to BOMB so it works proper
 - Fix up function of Poisoned Goal!! (Kills frogs if they sit them too long)
 - Blue frog
 - Yellow frog
@@ -10,7 +11,7 @@
 - Green TOAD (every 2nd Press)
 - Brown TOAD (inverse of G Toad.)
 - TILETYPE Mud Tile
-- TILETYPE Rocks (frogs can't go here)
+- Fix up look of ROCK tiletype
 - Game Start screen
 - Menus 
 - Ability to choose to play Randomised level, or campaign.
@@ -23,9 +24,10 @@
 
 
 
-
-
-
+DONE-----------------------------
+- Change so can create set Levels instead of randomized ones.
+- use version control
+- TILETYPE Rocks (frogs can't go here)
 
 
 */
