@@ -29,6 +29,7 @@
 global.frogType = irandom_range(0,2);
 global.timer = 0;
 global.hasWaited = false;
+global.turnNumber = 0;
 
 
 
@@ -131,6 +132,7 @@ if(keyboard_check_pressed(ord("R")))
 //image_speed = 1.2;
 
 //MOVING/Timing VARIABLES
+
 distToCheck = 63;
 distToSpot = 64;
 speedToMove = 2.9;
@@ -391,32 +393,38 @@ if(aFrogPurple == true)
 }
 
            
-            //LETS GET MOVING!!!
+            //LETS GET MOVING!!!----------------------------Start the turn?--------------
               if(letsGo == true)&amp;&amp;(canMove==true)
             {
-                /*
+                global.turnNumber ++;
+                global.actualTurnNum = round(global.turnNumber/instance_number(obj_frog));
+                show_debug_message("TURNNUMBER " + string(global.actualTurnNum));
+                
+                /* THIS IS CRAPPY NEED TO FIX
                 //Kill all idle animation objects
                 with(obj_frogGreen_idle_01)
                 {
                     instance_destroy();
                 }
                 */
-                //Check if there's a tile there.
                 
+                //Check if there's a tile there.
                 spotToMove = instance_nearest(movingLR, movingUpDwn, obj_tile);
                 distToSpot = point_distance(x, y, spotToMove.x, spotToMove.y);
-                
                 tileExists = instance_place(movingLR, movingUpDwn, obj_tile);
-                show_debug_message("tileExists: " + string(tileExists));
-                //If a tile isnt there set the speed to 0 so you don't move.
+                
+                //If a tile isnt there YOU DON"T MOVE!
                 if(tileExists == -4)
                 {
-                    fgh FIX THIS!!! speedToMove = 0; 
+                     //show_debug_message("A TILE IS THERE: " + string(tileExists));
+                     spotToMove = instance_nearest(x, y, obj_tile);
+                     jumpDir = 99;
+                     THIS ISNT WORKIGN!
+                     show_debug_message("NO JUMPING?: " + string(jumpDir));
                 }
                 
 
-                
-                
+            
                     //Move to that spot 
                     //If there is no frog or cross there you can move.
                     if(!position_meeting(spotToMove.x,spotToMove.y,obj_frog))
@@ -441,6 +449,11 @@ if(aFrogPurple == true)
                               {
                                 sprite_index = spr_frogGreen_jumpRight;
                               }
+                              if(jumpDir = 99)
+                              {
+                                sprite_index = spr_frogGreen_jumpUp;
+                              }
+                              
                           }
                           if(aFrogRed == true)
                           {
@@ -459,6 +472,10 @@ if(aFrogPurple == true)
                               if(jumpDir = 3)
                               {
                                 sprite_index = spr_frogRed_jumpRight;
+                              }
+                              if(jumpDir = 99)
+                              {
+                                sprite_index = spr_frogGreen_jumpUp;
                               }
                           }
                           if(aFrogPurple == true)
@@ -479,12 +496,14 @@ if(aFrogPurple == true)
                               {
                                 sprite_index = spr_frogPurple_jumpUp;
                               }
+                              if(jumpDir = 99)
+                              {
+                                sprite_index = spr_frogGreen_jumpUp;
+                              }
                           }
                           
                         //move to that spot---------------------------------------
                         instance_create(spotToMove.x, spotToMove.y, obj_cross);
-                        
-                        
                         move_towards_point(spotToMove.x,spotToMove.y,speedToMove);
                       
                     }
@@ -510,8 +529,7 @@ if(aFrogPurple == true)
             y = spotToMove.y;
             canMove = true;  
             sprite_index = whatsMySpriteInd;
-            audio_play_sound(snd_frogland, 1, false);
-            
+            audio_play_sound(snd_frogland, 1, false); 
         }
         
         if(place_meeting(x,y,obj_goal))

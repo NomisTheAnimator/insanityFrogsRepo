@@ -1,5 +1,5 @@
 /*
-- Purple (Diag) frog
+- MAKE THEM JUMP ON THE SPOT when they can't move
 - FIX UP IDLE ANIMATIONS again
 - Make RED frog in SPINE - PSD change shape a little. 
 - Work out better export solution from SPINE so dont have to use PS actions automation
@@ -30,6 +30,6 @@ DONE-----------------------------
 - Change so can create set Levels instead of randomized ones.
 - use version control
 - TILETYPE Rocks (frogs can't go here)
-
+- Purple (Diag) frog
 
 */
