@@ -419,7 +419,7 @@ if(aFrogPurple == true)
                      //show_debug_message("A TILE IS THERE: " + string(tileExists));
                      spotToMove = instance_nearest(x, y, obj_tile);
                      jumpDir = 99;
-                     THIS ISNT WORKIGN!
+                    // THIS ISNT WORKIGN!
                      show_debug_message("NO JUMPING?: " + string(jumpDir));
                 }
                 
