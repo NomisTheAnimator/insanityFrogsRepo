@@ -85,6 +85,7 @@
     <object>objects\obj_UI_manager</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\Level_Testing_stuff</room>
     <room>rooms\Level_01</room>
     <room>rooms\Level_02</room>
     <room>rooms\Level_03</room>
@@ -94,7 +95,6 @@
     <room>rooms\Level_07</room>
     <room>rooms\Level_11</room>
     <room>rooms\Level_End</room>
-    <room>rooms\Level_Testing_stuff</room>
     <room>rooms\randomLevel</room>
   </rooms>
   <help>

@@ -1,5 +1,6 @@
 /*
 - MAKE THEM JUMP ON THE SPOT when they can't move
+- CREATE TITLE MENU WITH FROGS ALL JUMPING AROUND THE TITLE!!!
 - FIX UP IDLE ANIMATIONS again
 - Make RED frog in SPINE - PSD change shape a little. 
 - Work out better export solution from SPINE so dont have to use PS actions automation

@@ -547,11 +547,15 @@ if(aFrogPurple == true)
             global.frogsSaved ++;
         }  
         
+        
+        
       /* this is now in the SPLASH animation
+        
         if(global.frogsSaved &gt;= global.frogCounterTotal+1)
         {
                 room_goto(room_next(room)); 
         }
+        
         */
         
 
