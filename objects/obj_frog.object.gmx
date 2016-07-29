@@ -396,9 +396,7 @@ if(aFrogPurple == true)
             //LETS GET MOVING!!!----------------------------Start the turn?--------------
               if(letsGo == true)&amp;&amp;(canMove==true)
             {
-                global.turnNumber ++;
-                global.actualTurnNum = round(global.turnNumber/instance_number(obj_frog));
-                show_debug_message("TURNNUMBER " + string(global.actualTurnNum));
+                
                 
                 /* THIS IS CRAPPY NEED TO FIX
                 //Kill all idle animation objects
@@ -516,11 +514,14 @@ if(aFrogPurple == true)
                 //If we are moving start checking how far we are from the spot.
                 if(moving == true)
                     {
+                        global.turnNumber ++;
+                        global.actualTurnNum = round(global.turnNumber/instance_number(obj_frog));
+                        show_debug_message("TURNNUMBER " + string(global.actualTurnNum));
                         distToSpot = point_distance(x, y, spotToMove.x, spotToMove.y);
                         canMove = false;
                     }
                     
-//Stop the thing when it gets to the place and turn it back into a frog
+//Stop the thing when it gets to the place and turn it back into a frog.
          if (place_meeting(x, y, obj_cross))
         {
             speed = 0;
