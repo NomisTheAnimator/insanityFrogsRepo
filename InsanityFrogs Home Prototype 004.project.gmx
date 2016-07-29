@@ -82,6 +82,7 @@
     </objects>
     <object>objects\effect_shake</object>
     <object>objects\obj_ROCK</object>
+    <object>objects\obj_UI_manager</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Level_Testing_stuff</room>
